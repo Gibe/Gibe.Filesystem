@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Gibe.FileSystem</id>
+    <version>$version$</version>
+    <authors>Gibe Digital Ltd</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+			Gibe file system helpers
+		</description>
+  </metadata>
+  <files>
+    <file src="bin\Release\Gibe.FileSystem.dll" target="lib" />
+  </files>
+</package>
