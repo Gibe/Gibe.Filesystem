@@ -1,4 +1,5 @@
-﻿namespace Gibe.FileSystem
+﻿#if NETFULL
+namespace Gibe.FileSystem
 {
 	public interface IPaths
 	{
@@ -18,3 +19,4 @@
 		}
 	}
 }
+#endif

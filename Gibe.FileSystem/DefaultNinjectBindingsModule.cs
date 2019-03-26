@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Ninject.Modules;
+﻿using Ninject.Modules;
 
 namespace Gibe.FileSystem
 {
@@ -13,7 +8,9 @@ namespace Gibe.FileSystem
 		{
 			Bind<IDirectoryService>().To<DirectoryService>().InSingletonScope();
 			Bind<IFileService>().To<FileService>();
+#if NETFULL
 			Bind<IPaths>().To<Paths>();
+#endif
 		}
 	}
 }

@@ -1,6 +1,9 @@
 ﻿using System.IO;
 using System.Web;
 using System.Xml.Linq;
+#if NETCORE
+using Microsoft.AspNetCore.Http;
+#endif
 
 namespace Gibe.FileSystem
 {
@@ -11,11 +14,19 @@ namespace Gibe.FileSystem
 		/// </summary>
 		void SaveXDocument(XDocument doc, string outputPath);
 
+#if NETFULL
 		/// <summary>
 		/// saves the passed uploaded file to the output path
 		/// </summary>
 		void SavePosted(HttpPostedFileBase file, string outputPath);
 
+#endif
+#if NETCORE
+		/// <summary>
+		/// saves the passed uploaded file to the output path
+		/// </summary>
+		void SavePosted(IFormFile file, string outputPath);
+#endif
 		/// <summary>
 		/// saves a file to the passed output path
 		/// </summary>

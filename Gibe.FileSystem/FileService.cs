@@ -1,6 +1,9 @@
 ﻿using System.IO;
 using System.Web;
 using System.Xml.Linq;
+#if NETCORE
+using Microsoft.AspNetCore.Http;
+#endif
 
 namespace Gibe.FileSystem
 {
@@ -14,6 +17,8 @@ namespace Gibe.FileSystem
 			doc.Save(outputPath);
 		}
 
+#if NETFULL
+
 		/// <summary>
 		/// saves the passed uploaded file to the output path
 		/// </summary>
@@ -21,7 +26,19 @@ namespace Gibe.FileSystem
 		{
 			file.SaveAs(outputPath);
 		}
-
+#endif
+#if NETCORE
+		/// <summary>
+		/// saves the passed uploaded file to the output path
+		/// </summary>
+		public virtual void SavePosted(IFormFile file, string outputPath)
+		{
+			using (var fs = new FileStream(outputPath, FileMode.Create))
+			{
+				file.CopyTo(fs);
+			}
+		}
+#endif
 		/// <summary>
 		/// saves a file to the passed output path
 		/// </summary>
@@ -36,6 +53,7 @@ namespace Gibe.FileSystem
 				writer.Flush();
 			}
 		}
+
 
 		/// <summary>
 		/// reads all lines from the passed file path
